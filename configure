@@ -1,0 +1,13 @@
+--enable-qt5
+--disable-stdlib-debug
+--without-included-boost
+--with-packaging=posix
+--disable-dependency-tracking
+--disable-silent-rules
+--without-aspell
+--without-enchant
+--without-hunspell
+--disable-monolithic-build
+--enable-nls
+--with-packaging=posix
+--with-qt-dir=/usr/lib64/qt5

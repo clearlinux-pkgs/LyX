@@ -1,0 +1,32 @@
+Configure miss: whether the compiler is clang
+Configure miss: main in -lshlwapi
+Configure miss: main in -lpsapi
+Configure miss: main in -lgdi32
+Configure miss: main in -lole32
+Configure miss: whether to use included boost library
+Configure miss: whether to use included iconv library
+Configure miss: whether to use included zlib library
+Configure miss: moc
+Configure miss: moc-qt5
+Configure miss: uic
+Configure miss: uic-qt5
+Configure miss: rcc
+Configure miss: rcc-qt5
+Configure miss: whether sys/types.h defines makedev
+Configure miss: sys/utime.h usability
+Configure miss: sys/utime.h presence
+Configure miss: _close
+Configure miss: _getpid
+Configure miss: _open
+Configure miss: _pclose
+Configure miss: _popen
+Configure miss: _mkdir
+Configure miss: whether mkdir takes one argument
+Configure miss: whether to use included hunspell library
+Configure miss: whether hunspell C++ (rather than C) ABI is provided
+Configure miss: mythes.hxx usability
+Configure miss: mythes.hxx presence
+Configure miss: mythes.hxx
+Configure miss: mythes/mythes.hxx usability
+Configure miss: mythes/mythes.hxx presence
+Configure miss: mythes/mythes.hxx
