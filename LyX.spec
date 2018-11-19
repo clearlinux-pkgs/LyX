@@ -6,7 +6,7 @@
 #
 Name     : LyX
 Version  : 2.3.1.2
-Release  : 1
+Release  : 2
 URL      : https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.1-2.tar.gz
 Source0  : https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.1-2.tar.gz
 Source99 : https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.1-2.tar.gz.sig
