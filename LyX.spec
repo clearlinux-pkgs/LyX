@@ -6,7 +6,7 @@
 #
 Name     : LyX
 Version  : 2.3.1.2
-Release  : 2
+Release  : 3
 URL      : https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.1-2.tar.gz
 Source0  : https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.1-2.tar.gz
 Source99 : https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.1-2.tar.gz.sig
@@ -18,6 +18,7 @@ Requires: LyX-data = %{version}-%{release}
 Requires: LyX-license = %{version}-%{release}
 Requires: LyX-locales = %{version}-%{release}
 Requires: LyX-man = %{version}-%{release}
+BuildRequires : aspell-dev
 BuildRequires : bc
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-configure
@@ -106,16 +107,13 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1542225646
+export SOURCE_DATE_EPOCH=1542658928
 %configure --disable-static --enable-qt5 \
 --disable-stdlib-debug \
 --without-included-boost \
 --with-packaging=posix \
 --disable-dependency-tracking \
 --disable-silent-rules \
---without-aspell \
---without-enchant \
---without-hunspell \
 --disable-monolithic-build \
 --enable-nls \
 --with-packaging=posix \
@@ -130,7 +128,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1542225646
+export SOURCE_DATE_EPOCH=1542658928
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/LyX
 cp 3rdparty/boost/LICENSE_1_0.txt %{buildroot}/usr/share/package-licenses/LyX/3rdparty_boost_LICENSE_1_0.txt

@@ -4,9 +4,6 @@
 --with-packaging=posix
 --disable-dependency-tracking
 --disable-silent-rules
---without-aspell
---without-enchant
---without-hunspell
 --disable-monolithic-build
 --enable-nls
 --with-packaging=posix

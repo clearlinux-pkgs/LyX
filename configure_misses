@@ -23,7 +23,13 @@ Configure miss: _popen
 Configure miss: _mkdir
 Configure miss: whether mkdir takes one argument
 Configure miss: whether to use included hunspell library
+Configure miss: HUNSPELL... checking hunspell/hunspell.hxx usability
+Configure miss: hunspell/hunspell.hxx presence
+Configure miss: hunspell/hunspell.hxx
+Configure miss: main in -lhunspell
+Configure miss: whether to use hunspell
 Configure miss: whether hunspell C++ (rather than C) ABI is provided
+Configure miss: ENCHANT... checking for ENCHANT... checking whether to use enchant
 Configure miss: mythes.hxx usability
 Configure miss: mythes.hxx presence
 Configure miss: mythes.hxx
