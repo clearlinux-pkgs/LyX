@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDE7A44FAC7FB382D (sanda@lyx.org)
 #
 Name     : LyX
-Version  : 2.3.1.2
-Release  : 3
-URL      : https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.1-2.tar.gz
-Source0  : https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.1-2.tar.gz
-Source99 : https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.1-2.tar.gz.sig
+Version  : 2.3.2.1
+Release  : 4
+URL      : https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.2-1.tar.gz
+Source0  : https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.2-1.tar.gz
+Source99 : https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.2-1.tar.gz.sig
 Summary  : A WYSIWYM (What You See Is What You Mean) document processor
 Group    : Development/Tools
 License  : BSD-2-Clause BSL-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-3.0
@@ -100,14 +100,14 @@ man components for the LyX package.
 
 
 %prep
-%setup -q -n lyx-2.3.1
+%setup -q -n lyx-2.3.2-1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1542658928
+export SOURCE_DATE_EPOCH=1545508370
 %configure --disable-static --enable-qt5 \
 --disable-stdlib-debug \
 --without-included-boost \
@@ -128,7 +128,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1542658928
+export SOURCE_DATE_EPOCH=1545508370
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/LyX
 cp 3rdparty/boost/LICENSE_1_0.txt %{buildroot}/usr/share/package-licenses/LyX/3rdparty_boost_LICENSE_1_0.txt
@@ -139,7 +139,6 @@ cp 3rdparty/libiconv/1.15/COPYING.LIB %{buildroot}/usr/share/package-licenses/Ly
 cp 3rdparty/mythes/1.2.5/COPYING %{buildroot}/usr/share/package-licenses/LyX/3rdparty_mythes_1.2.5_COPYING
 cp COPYING %{buildroot}/usr/share/package-licenses/LyX/COPYING
 cp development/MacOSX/COPYING %{buildroot}/usr/share/package-licenses/LyX/development_MacOSX_COPYING
-cp development/Win32/packaging/installer/license.rtf %{buildroot}/usr/share/package-licenses/LyX/development_Win32_packaging_installer_license.rtf
 %make_install
 %find_lang lyx
 
@@ -2645,7 +2644,6 @@ cp development/Win32/packaging/installer/license.rtf %{buildroot}/usr/share/pack
 /usr/share/package-licenses/LyX/3rdparty_mythes_1.2.5_COPYING
 /usr/share/package-licenses/LyX/COPYING
 /usr/share/package-licenses/LyX/development_MacOSX_COPYING
-/usr/share/package-licenses/LyX/development_Win32_packaging_installer_license.rtf
 
 %files man
 %defattr(0644,root,root,0755)
