@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDE7A44FAC7FB382D (sanda@lyx.org)
 #
 Name     : LyX
-Version  : 2.3.2.2
-Release  : 5
-URL      : https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.2-2.tar.gz
-Source0  : https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.2-2.tar.gz
-Source99 : https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.2-2.tar.gz.sig
+Version  : 2.3.3
+Release  : 6
+URL      : https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.3.tar.xz
+Source0  : https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.3.tar.xz
+Source1  : https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.3.tar.xz.sig
 Summary  : A WYSIWYM (What You See Is What You Mean) document processor
 Group    : Development/Tools
 License  : BSD-2-Clause BSL-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-3.0
@@ -23,6 +23,7 @@ BuildRequires : bc
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-configure
 BuildRequires : buildreq-qmake
+BuildRequires : file-dev
 BuildRequires : pkgconfig(Qt5Concurrent)
 BuildRequires : pkgconfig(Qt5DBus)
 BuildRequires : pkgconfig(Qt5Quick)
@@ -30,7 +31,6 @@ BuildRequires : pkgconfig(Qt5QuickWidgets)
 BuildRequires : pkgconfig(Qt5Svg)
 BuildRequires : pkgconfig(Qt5Widgets)
 BuildRequires : pkgconfig(Qt5X11Extras)
-BuildRequires : pkgconfig(zlib)
 BuildRequires : qtbase-dev
 BuildRequires : qttools-extras
 
@@ -61,7 +61,6 @@ Summary: bin components for the LyX package.
 Group: Binaries
 Requires: LyX-data = %{version}-%{release}
 Requires: LyX-license = %{version}-%{release}
-Requires: LyX-man = %{version}-%{release}
 
 %description bin
 bin components for the LyX package.
@@ -100,14 +99,20 @@ man components for the LyX package.
 
 
 %prep
-%setup -q -n lyx-2.3.2-2
+%setup -q -n lyx-2.3.3
+cd %{_builddir}/lyx-2.3.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1546462433
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1579205914
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 %configure --disable-static --enable-qt5 \
 --disable-stdlib-debug \
 --without-included-boost \
@@ -121,24 +126,25 @@ export SOURCE_DATE_EPOCH=1546462433
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1546462433
+export SOURCE_DATE_EPOCH=1579205914
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/LyX
-cp 3rdparty/boost/LICENSE_1_0.txt %{buildroot}/usr/share/package-licenses/LyX/3rdparty_boost_LICENSE_1_0.txt
-cp 3rdparty/hunspell/1.6.2/COPYING %{buildroot}/usr/share/package-licenses/LyX/3rdparty_hunspell_1.6.2_COPYING
-cp 3rdparty/hunspell/1.6.2/COPYING.LESSER %{buildroot}/usr/share/package-licenses/LyX/3rdparty_hunspell_1.6.2_COPYING.LESSER
-cp 3rdparty/hunspell/1.6.2/license.hunspell %{buildroot}/usr/share/package-licenses/LyX/3rdparty_hunspell_1.6.2_license.hunspell
-cp 3rdparty/libiconv/1.15/COPYING.LIB %{buildroot}/usr/share/package-licenses/LyX/3rdparty_libiconv_1.15_COPYING.LIB
-cp 3rdparty/mythes/1.2.5/COPYING %{buildroot}/usr/share/package-licenses/LyX/3rdparty_mythes_1.2.5_COPYING
-cp COPYING %{buildroot}/usr/share/package-licenses/LyX/COPYING
-cp development/MacOSX/COPYING %{buildroot}/usr/share/package-licenses/LyX/development_MacOSX_COPYING
+cp %{_builddir}/lyx-2.3.3/3rdparty/boost/LICENSE_1_0.txt %{buildroot}/usr/share/package-licenses/LyX/3cba29011be2b9d59f6204d6fa0a386b1b2dbd90
+cp %{_builddir}/lyx-2.3.3/3rdparty/hunspell/1.6.2/COPYING %{buildroot}/usr/share/package-licenses/LyX/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/lyx-2.3.3/3rdparty/hunspell/1.6.2/COPYING.LESSER %{buildroot}/usr/share/package-licenses/LyX/f45ee1c765646813b442ca58de72e20a64a7ddba
+cp %{_builddir}/lyx-2.3.3/3rdparty/hunspell/1.6.2/license.hunspell %{buildroot}/usr/share/package-licenses/LyX/7e9367aa6f34c602c5175ef7a86ce800b05e339c
+cp %{_builddir}/lyx-2.3.3/3rdparty/libiconv/1.15/COPYING.LIB %{buildroot}/usr/share/package-licenses/LyX/0e8e850b0580fbaaa0872326cb1b8ad6adda9b0d
+cp %{_builddir}/lyx-2.3.3/3rdparty/mythes/1.2.5/COPYING %{buildroot}/usr/share/package-licenses/LyX/cd4d2be2fb45653d8f8923933046f5a4cb4ff882
+cp %{_builddir}/lyx-2.3.3/COPYING %{buildroot}/usr/share/package-licenses/LyX/c48dcfda9c11c8a1d771fdde0a0478c2b8254450
+cp %{_builddir}/lyx-2.3.3/development/MacOSX/COPYING %{buildroot}/usr/share/package-licenses/LyX/72528f0b6677fe2c7b399de8d7a883dda71fa712
+cp %{_builddir}/lyx-2.3.3/development/Win32/packaging/installer/license.rtf %{buildroot}/usr/share/package-licenses/LyX/b67718a73c6f56629d55760d7633c805b3ceccdc
 %make_install
 %find_lang lyx
 
@@ -392,6 +398,7 @@ cp development/MacOSX/COPYING %{buildroot}/usr/share/package-licenses/LyX/develo
 /usr/share/lyx/examples/PDF-form.lyx
 /usr/share/lyx/examples/aa_sample.lyx
 /usr/share/lyx/examples/aas_sample.lyx
+/usr/share/lyx/examples/aas_sample62.lyx
 /usr/share/lyx/examples/achemso.lyx
 /usr/share/lyx/examples/addressExample.adr
 /usr/share/lyx/examples/amsart-test.lyx
@@ -583,6 +590,7 @@ cp development/MacOSX/COPYING %{buildroot}/usr/share/package-licenses/LyX/develo
 /usr/share/lyx/examples/sweave.lyx
 /usr/share/lyx/examples/thesis/Acknowledgments.lyx
 /usr/share/lyx/examples/thesis/Appendix.lyx
+/usr/share/lyx/examples/thesis/Bibliography.lyx
 /usr/share/lyx/examples/thesis/Summary.lyx
 /usr/share/lyx/examples/thesis/alpha.bst
 /usr/share/lyx/examples/thesis/chapter-1.lyx
@@ -802,6 +810,7 @@ cp development/MacOSX/COPYING %{buildroot}/usr/share/package-licenses/LyX/develo
 /usr/share/lyx/images/classic/tabular-feature_multirow.png
 /usr/share/lyx/images/classic/tabular-feature_set-all-lines.png
 /usr/share/lyx/images/classic/tabular-feature_set-border-lines.png
+/usr/share/lyx/images/classic/tabular-feature_set-inner-lines.png
 /usr/share/lyx/images/classic/tabular-feature_set-longtabular.png
 /usr/share/lyx/images/classic/tabular-feature_set-rotate-cell.png
 /usr/share/lyx/images/classic/tabular-feature_set-rotate-tabular.png
@@ -2132,6 +2141,7 @@ cp development/MacOSX/COPYING %{buildroot}/usr/share/package-licenses/LyX/develo
 /usr/share/lyx/images/oxygen/tabular-feature_multirow.svgz
 /usr/share/lyx/images/oxygen/tabular-feature_set-all-lines.svgz
 /usr/share/lyx/images/oxygen/tabular-feature_set-border-lines.svgz
+/usr/share/lyx/images/oxygen/tabular-feature_set-inner-lines.svgz
 /usr/share/lyx/images/oxygen/tabular-feature_set-longtabular.svgz
 /usr/share/lyx/images/oxygen/tabular-feature_toggle-line-bottom.svgz
 /usr/share/lyx/images/oxygen/tabular-feature_toggle-line-left.svgz
@@ -2199,6 +2209,7 @@ cp development/MacOSX/COPYING %{buildroot}/usr/share/package-licenses/LyX/develo
 /usr/share/lyx/images/tabular-feature_multirow.svgz
 /usr/share/lyx/images/tabular-feature_set-all-lines.svgz
 /usr/share/lyx/images/tabular-feature_set-border-lines.svgz
+/usr/share/lyx/images/tabular-feature_set-inner-lines.svgz
 /usr/share/lyx/images/tabular-feature_set-longtabular.svgz
 /usr/share/lyx/images/tabular-feature_set-rotate-cell.svgz
 /usr/share/lyx/images/tabular-feature_set-rotate-tabular.svgz
@@ -2285,6 +2296,7 @@ cp development/MacOSX/COPYING %{buildroot}/usr/share/package-licenses/LyX/develo
 /usr/share/lyx/layouts/aapaper.layout
 /usr/share/lyx/layouts/aastex.layout
 /usr/share/lyx/layouts/aastex6.layout
+/usr/share/lyx/layouts/aastex62.layout
 /usr/share/lyx/layouts/achemso.layout
 /usr/share/lyx/layouts/acm-sigs-alt.layout
 /usr/share/lyx/layouts/acm-sigs.inc
@@ -2399,6 +2411,7 @@ cp development/MacOSX/COPYING %{buildroot}/usr/share/package-licenses/LyX/develo
 /usr/share/lyx/layouts/logicalmkup.module
 /usr/share/lyx/layouts/ltugboat.layout
 /usr/share/lyx/layouts/lyxmacros.inc
+/usr/share/lyx/layouts/maa-monthly.layout
 /usr/share/lyx/layouts/memoir.layout
 /usr/share/lyx/layouts/minimalistic.module
 /usr/share/lyx/layouts/moderncv.layout
@@ -2583,6 +2596,7 @@ cp development/MacOSX/COPYING %{buildroot}/usr/share/package-licenses/LyX/develo
 /usr/share/lyx/templates/RJournal.lyx
 /usr/share/lyx/templates/aa.lyx
 /usr/share/lyx/templates/aastex6.lyx
+/usr/share/lyx/templates/aastex62.lyx
 /usr/share/lyx/templates/acmart.lyx
 /usr/share/lyx/templates/beamer-conference-ornate-20min.lyx
 /usr/share/lyx/templates/ctex.lyx
@@ -2600,6 +2614,7 @@ cp development/MacOSX/COPYING %{buildroot}/usr/share/package-licenses/LyX/develo
 /usr/share/lyx/templates/koma-letter2.lyx
 /usr/share/lyx/templates/letter.lyx
 /usr/share/lyx/templates/lettre.lyx
+/usr/share/lyx/templates/maa-monthly.lyx
 /usr/share/lyx/templates/obsolete/ACM-SIGS.lyx
 /usr/share/lyx/templates/obsolete/ACM-siggraph.lyx
 /usr/share/lyx/templates/obsolete/ACM-sigplan.lyx
@@ -2636,14 +2651,15 @@ cp development/MacOSX/COPYING %{buildroot}/usr/share/package-licenses/LyX/develo
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/LyX/3rdparty_boost_LICENSE_1_0.txt
-/usr/share/package-licenses/LyX/3rdparty_hunspell_1.6.2_COPYING
-/usr/share/package-licenses/LyX/3rdparty_hunspell_1.6.2_COPYING.LESSER
-/usr/share/package-licenses/LyX/3rdparty_hunspell_1.6.2_license.hunspell
-/usr/share/package-licenses/LyX/3rdparty_libiconv_1.15_COPYING.LIB
-/usr/share/package-licenses/LyX/3rdparty_mythes_1.2.5_COPYING
-/usr/share/package-licenses/LyX/COPYING
-/usr/share/package-licenses/LyX/development_MacOSX_COPYING
+/usr/share/package-licenses/LyX/0e8e850b0580fbaaa0872326cb1b8ad6adda9b0d
+/usr/share/package-licenses/LyX/3cba29011be2b9d59f6204d6fa0a386b1b2dbd90
+/usr/share/package-licenses/LyX/72528f0b6677fe2c7b399de8d7a883dda71fa712
+/usr/share/package-licenses/LyX/7e9367aa6f34c602c5175ef7a86ce800b05e339c
+/usr/share/package-licenses/LyX/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+/usr/share/package-licenses/LyX/b67718a73c6f56629d55760d7633c805b3ceccdc
+/usr/share/package-licenses/LyX/c48dcfda9c11c8a1d771fdde0a0478c2b8254450
+/usr/share/package-licenses/LyX/cd4d2be2fb45653d8f8923933046f5a4cb4ff882
+/usr/share/package-licenses/LyX/f45ee1c765646813b442ca58de72e20a64a7ddba
 
 %files man
 %defattr(0644,root,root,0755)
