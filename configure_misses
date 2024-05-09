@@ -1,38 +1,25 @@
-Configure miss: whether the compiler is clang
-Configure miss: main in -lshlwapi
-Configure miss: main in -lpsapi
-Configure miss: main in -lgdi32
-Configure miss: main in -lole32
-Configure miss: whether to use included boost library
-Configure miss: whether to use included iconv library
-Configure miss: whether to use included zlib library
-Configure miss: moc
-Configure miss: moc-qt5
-Configure miss: uic
-Configure miss: uic-qt5
-Configure miss: rcc
-Configure miss: rcc-qt5
-Configure miss: whether sys/types.h defines makedev
-Configure miss: sys/utime.h usability
-Configure miss: sys/utime.h presence
+Configure miss: ENCHANT... checking for ENCHANT... checking whether to use enchant
+Configure miss: HUNSPELL... checking for hunspell/hunspell.hxx
 Configure miss: _close
 Configure miss: _getpid
+Configure miss: _mkdir
 Configure miss: _open
 Configure miss: _pclose
 Configure miss: _popen
-Configure miss: _mkdir
-Configure miss: whether mkdir takes one argument
-Configure miss: whether to use included hunspell library
-Configure miss: HUNSPELL... checking hunspell/hunspell.hxx usability
-Configure miss: hunspell/hunspell.hxx presence
-Configure miss: hunspell/hunspell.hxx
+Configure miss: g++ option to enable C++11 features
+Configure miss: main in -lgdi32
 Configure miss: main in -lhunspell
-Configure miss: whether to use hunspell
-Configure miss: whether hunspell C++ (rather than C) ABI is provided
-Configure miss: ENCHANT... checking for ENCHANT... checking whether to use enchant
-Configure miss: mythes.hxx usability
-Configure miss: mythes.hxx presence
+Configure miss: main in -lole32
+Configure miss: main in -lpsapi
+Configure miss: main in -lshlwapi
 Configure miss: mythes.hxx
-Configure miss: mythes/mythes.hxx usability
-Configure miss: mythes/mythes.hxx presence
 Configure miss: mythes/mythes.hxx
+Configure miss: whether mkdir takes one argument
+Configure miss: whether the compiler is clang
+Configure miss: whether the compiler supports GNU Objective C
+Configure miss: whether to use hunspell
+Configure miss: whether to use included boost library
+Configure miss: whether to use included hunspell library
+Configure miss: whether to use included iconv library
+Configure miss: whether to use included zlib library
+Configure miss: x86_64-generic-linux-gnu-clang
