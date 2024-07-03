@@ -1,3 +1,22 @@
+What's new in version 2.4.0?
+----------------------------
+
+The new features in LyX 2.4 are detailed in
+https://wiki.lyx.org/LyX/NewInLyX24
+
+* DocBook 5 / ePub / XHTML 5  support
+* Default Unicode for new documents
+* Table improvements (styles and other)
+* Redesign of Find/Replace dialog
+* Flexible text fields
+* Counters
+* Global float settings
+* Insets external editing
+* Dark theme
+* Qt 5 default, Qt 6 supported, Qt 4 dropped
+
+
+
 What's new in version 2.3.7?
 ----------------------------
 
@@ -91,6 +110,7 @@ Alt-i, on Windows and Linux, and Control-Option-i on OSX (assuming you are
 using the default keybindings).
 
 
+
 What's new in version 2.3.0?
 ----------------------------
 
@@ -106,11 +126,6 @@ http://wiki.lyx.org/LyX/NewInLyX23
 * Fonts
 * New supported languages
 * New supported LaTeX commands
-* New template for Inkscape drawings
-* Handling of environments (e.g. beamer frames)
-* Footnotes in tables
-* Localization of nomenclature
-* New translations of the LyX user interface
 * Improvements to on-screen display of math equations
 * Automatic detection of file changes
 * Citation & reference dialogs
@@ -120,6 +135,7 @@ http://wiki.lyx.org/LyX/NewInLyX23
 * Forward/Reverse search and error reporting
 * Change tracking
 * Code preview & highlighting
+
 
 
 What's new in version 2.2.3?

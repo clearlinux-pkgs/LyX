@@ -14,9 +14,11 @@ Configure miss: main in -lpsapi
 Configure miss: main in -lshlwapi
 Configure miss: mythes.hxx
 Configure miss: mythes/mythes.hxx
+Configure miss: whether Qt6 is requested
 Configure miss: whether mkdir takes one argument
 Configure miss: whether the compiler is clang
 Configure miss: whether the compiler supports GNU Objective C
+Configure miss: whether to build dv2dt and dt2dv
 Configure miss: whether to use hunspell
 Configure miss: whether to use included boost library
 Configure miss: whether to use included hunspell library
